@@ -1,0 +1,45 @@
+class Stack:
+	"""docstring for Stack"""
+	def __init__(self):
+		self.stack = []
+
+	def isEmpty(self):
+		return self.stack == []
+
+	def push(self, item):
+		self.stack.append(item)
+
+	def pop(self):
+		return self.stack.pop()
+
+	def top(self):
+		return self.stack[len(self.stack) - 1]
+
+	def size(self):
+		return len(self.stack)
+
+
+st = Stack()
+
+string = '(Rupe[sh])'
+
+
+for char in string:
+	if char in ['(', '[']:
+		st.push(char)
+	else:
+		if st.isEmpty():
+			break
+		try:
+			if st.top() =='[' and char ==']':
+				st.pop()
+			if st.top() == '(' and char == ')':
+				st.pop()
+
+		except:
+			print("under flow unbalanced")
+if st.isEmpty():
+	print("balanced")
+else:
+	print("unbalanced")
+
